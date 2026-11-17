@@ -35,10 +35,18 @@ header{position:sticky;top:0;z-index:20;background:rgba(247,245,237,.94);backdro
 .brand-name{display:flex;flex-direction:column;font-weight:850;letter-spacing:.04em;font-size:1.18rem;line-height:1.05}
 .brand-tagline{margin-top:4px;color:var(--clay);font-size:.65rem;font-weight:850;letter-spacing:.19em;line-height:1;text-transform:uppercase}
 .brand-mark{width:38px;height:38px;border-radius:13px;background:var(--forest);display:grid;place-items:center;color:white;font-size:21px}
-.navlinks{display:flex;align-items:center;gap:clamp(5px,.55vw,8px);font-size:.93rem;font-weight:650;color:#43564a;white-space:nowrap}
+.navlinks{display:flex;align-items:center;gap:clamp(8px,.8vw,12px);font-size:.93rem;font-weight:650;color:#43564a;white-space:nowrap}
 .navlinks a{white-space:nowrap;flex-shrink:0}
 .navlinks .nav-cta{padding:10px 11px;font-size:.91rem}
-.navlinks a:hover{color:var(--clay)}
+.navlinks a:hover,.nav-dropdown-toggle:hover{color:var(--clay)}
+.nav-dropdown{position:relative;flex-shrink:0}
+.nav-dropdown-toggle{display:inline-flex;align-items:center;gap:7px;padding:10px 2px;border:0;background:transparent;color:inherit;font:inherit;font-weight:inherit;white-space:nowrap;cursor:pointer}
+.nav-dropdown-toggle .chevron{font-size:.72em;transition:transform .2s}
+.nav-dropdown.open .chevron{transform:rotate(180deg)}
+.nav-submenu{display:none;position:absolute;top:100%;left:0;min-width:220px;padding:8px;background:#fff;border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow);z-index:30}
+.nav-dropdown:hover .nav-submenu,.nav-dropdown:focus-within .nav-submenu,.nav-dropdown.open .nav-submenu{display:block}
+.nav-submenu a{display:block;padding:10px 12px;border-radius:9px;font-size:.9rem}
+.nav-submenu a:hover{background:var(--sage)}
 .nav-cta,.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border:0;border-radius:999px;padding:12px 20px;background:var(--forest);color:white;font-weight:750;cursor:pointer;transition:.2s}
 .nav-cta:hover,.btn:hover{background:#183b2a;transform:translateY(-1px)}
 .btn.clay{background:var(--clay)}.btn.clay:hover{background:#a85f42}
@@ -123,7 +131,12 @@ footer p{color:#c4d1c4;max-width:420px;font-size:.9rem;margin:9px 0 0}
 @media(max-width:1100px){
  .nav{height:66px}.menu-toggle{display:block}
  .navlinks{display:none;position:absolute;top:66px;left:0;right:0;background:var(--cream);padding:16px 22px 22px;border-bottom:1px solid var(--line);flex-direction:column;align-items:stretch;gap:0}
- .navlinks.open{display:flex}.navlinks a{padding:11px 4px;border-bottom:1px solid var(--line);font-size:.96rem}.navlinks .nav-cta{margin-top:14px;text-align:center}
+ .navlinks.open{display:flex}.navlinks>a{padding:12px 4px;border-bottom:1px solid var(--line);font-size:.98rem}
+ .nav-dropdown{width:100%;border-bottom:1px solid var(--line)}
+ .nav-dropdown-toggle{width:100%;justify-content:space-between;padding:12px 4px;font-size:.98rem}
+ .nav-submenu{position:static;min-width:0;padding:0 0 8px 12px;border:0;border-radius:0;box-shadow:none;background:transparent}
+ .nav-submenu a{padding:10px 12px;font-size:.94rem;border:0}
+ .navlinks .nav-cta{margin-top:14px;text-align:center}
  .wrap{width:min(100% - 30px,560px)}
  .hero{padding:48px 0}.hero-grid{grid-template-columns:1fr;gap:30px}.hero-art,.hero-art img{min-height:300px}.hero-art{border-radius:24px}
  .section{padding:60px 0}.cards{grid-template-columns:1fr}.card img{height:220px}
@@ -140,7 +153,12 @@ footer p{color:#c4d1c4;max-width:420px;font-size:.9rem;margin:9px 0 0}
   <a class="brand" href="#home" aria-label="Aharavanam home"><span class="brand-mark">🌱</span><span class="brand-name">AHARAVANAM<span class="brand-tagline">FOOD FOREST</span></span></a>
   <button class="menu-toggle" id="menuToggle" aria-label="Open menu" aria-controls="navLinks" aria-expanded="false">☰</button>
   <nav class="navlinks" id="navLinks">
-   <a href="#home">Home</a><a href="#community">Home &amp; Community Growers</a><a href="#development">Develop Food Forests</a><a href="#experiences">Experiences</a><a href="#corporate">Corporate</a><a href="#network">Our Network</a><a class="nav-cta" href="#partnerships">Partner with us ↗</a>
+   <a href="#home">Home</a><a href="#community">Home &amp; Community Growers</a>
+   <div class="nav-dropdown" id="developDropdown">
+    <button class="nav-dropdown-toggle" type="button" aria-expanded="false" aria-controls="developSubmenu">Develop Food Forests <span class="chevron" aria-hidden="true">▾</span></button>
+    <div class="nav-submenu" id="developSubmenu"><a href="#development">Food Forest Development</a><a href="#future-food">The Future of Food</a></div>
+   </div>
+   <a href="#experiences">Experiences</a><a href="#corporate">Corporate</a><a href="#network">Our Network</a><a class="nav-cta" href="#partnerships">Partner with us ↗</a>
   </nav>
  </div>
 </header>
@@ -200,6 +218,38 @@ footer p{color:#c4d1c4;max-width:420px;font-size:.9rem;margin:9px 0 0}
   <p>Colleges and universities • Hospitals and healthcare campuses • Companies and corporate campuses • Government and public institutions • Residential communities • Landowners with suitable open land.</p>
  </div>
  <p class="hero-note" style="text-align:center;margin-top:24px">Every project is subject to site suitability, land permissions, a written agreement, agreed investment and operating responsibilities, and actual seasonal harvests. Food-forest establishment takes time; produce quantities and financial returns are not guaranteed.</p>
+</div></section>
+
+<section class="section" id="future-food" style="background:#f0eee4"><div class="wrap">
+ <div class="section-head center">
+  <div class="eyebrow"><span class="dot"></span> Aharavanam • The Future of Food</div>
+  <h2>Will the food we take for granted always be available?</h2>
+  <p>Weather, water, changing land use and pressures on agriculture are reshaping the conditions in which food is grown and reaches our tables. Understanding these changes is the first step towards building more resilient communities.</p>
+ </div>
+ <div class="cards">
+  <article class="card"><img src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=900&q=85" alt="Agricultural land and changing growing conditions"><div class="card-body"><div class="card-icon">🌦️</div><h3>Changing weather patterns</h3><p>Heat, irregular rainfall, dry spells and extreme weather can affect planting cycles, crop health and harvests.</p></div></article>
+  <article class="card"><img src="https://images.unsplash.com/photo-1519501025264-65ba15a82390?auto=format&fit=crop&w=900&q=85" alt="Expanding city landscape"><div class="card-body"><div class="card-icon">🏙️</div><h3>Urbanisation and land</h3><p>As towns and cities expand, agricultural land can be converted, fragmented or placed under greater pressure.</p></div></article>
+  <article class="card"><img src="https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=900&q=85" alt="Water landscape and natural resources"><div class="card-body"><div class="card-icon">💧</div><h3>Water resources</h3><p>Groundwater stress, rainfall variability and competing demands make careful water planning essential for growing food.</p></div></article>
+  <article class="card"><img src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=900&q=85" alt="Agricultural field"><div class="card-body"><div class="card-icon">🚜</div><h3>People and agriculture</h3><p>Changing livelihoods, an ageing farm workforce and fewer people entering farming can affect agricultural skills and continuity.</p></div></article>
+  <article class="card"><img src="https://images.unsplash.com/photo-1472396961693-142e6e269027?auto=format&fit=crop&w=900&q=85" alt="Biodiverse natural landscape"><div class="card-body"><div class="card-icon">🦋</div><h3>Soil and biodiversity</h3><p>Healthy soils, pollinators and ecological diversity matter. Their decline can make food-growing systems less resilient.</p></div></article>
+  <article class="card"><img src="https://images.unsplash.com/photo-1542838132-92c53300491e?auto=format&fit=crop&w=900&q=85" alt="Fresh produce at a market"><div class="card-body"><div class="card-icon">🥬</div><h3>Food supply and affordability</h3><p>Transport interruptions, seasonal shortages and price changes can affect access to nutritious food, even when national production is substantial.</p></div></article>
+ </div>
+ <div class="band" style="border-radius:24px;margin-top:38px;padding:42px 34px">
+  <div class="band-grid" style="gap:30px">
+   <div><div class="eyebrow"><span class="dot"></span> A practical response</div><h2 style="font-size:2rem">Grow some of the food you depend on.</h2><p>A thoughtfully planned food forest can bring fruit trees, edible plants and biodiversity together. With suitable land, locally appropriate species, soil care and responsible water management, it can contribute to household and community food resilience over time.</p></div>
+   <div class="band-points">
+    <div class="point"><b>Own or steward land</b><span>Explore whether a suitable piece of land could become a long-term food-growing space.</span></div>
+    <div class="point"><b>Join a shared food forest</b><span>Participate in community growing even if you do not own land.</span></div>
+    <div class="point"><b>Learn before planting</b><span>Understand soil, water, local climate, species selection and ongoing maintenance.</span></div>
+    <div class="point"><b>Build resilience together</b><span>Connect landowners, growers, institutions and volunteers around practical growing projects.</span></div>
+   </div>
+  </div>
+ </div>
+ <div class="section-head center" style="margin:36px auto 0">
+  <h3 style="color:var(--forest)">A food forest is a long-term commitment</h3>
+  <p>It takes time, care, suitable water planning and ongoing maintenance to mature. It will not replace the food supply chain or guarantee yields or financial returns. Our aim is to help people make informed choices and find practical ways to participate.</p>
+  <a class="btn" href="#join">Explore food-forest participation →</a>
+ </div>
 </div></section>
 
 <section class="band" id="corporate"><div class="wrap">
@@ -317,6 +367,12 @@ footer p{color:#c4d1c4;max-width:420px;font-size:.9rem;margin:9px 0 0}
 <script>
 const menuToggle=document.getElementById('menuToggle');
 const navLinks=document.getElementById('navLinks');
+const developDropdown=document.getElementById('developDropdown');
+const developToggle=developDropdown.querySelector('.nav-dropdown-toggle');
+developToggle.addEventListener('click',()=>{
+ const open=developDropdown.classList.toggle('open');
+ developToggle.setAttribute('aria-expanded',String(open));
+});
 menuToggle.addEventListener('click',()=>{
  const open=navLinks.classList.toggle('open');
  menuToggle.setAttribute('aria-expanded',String(open));
@@ -324,6 +380,7 @@ menuToggle.addEventListener('click',()=>{
 });
 navLinks.querySelectorAll('a').forEach(link=>link.addEventListener('click',()=>{
  navLinks.classList.remove('open');menuToggle.setAttribute('aria-expanded','false');menuToggle.textContent='☰';
+ developDropdown.classList.remove('open');developToggle.setAttribute('aria-expanded','false');
 }));
 document.getElementById('year').textContent=new Date().getFullYear();
 const registrationForm=document.getElementById('interestForm');
