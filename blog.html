@@ -9,24 +9,25 @@
 <meta name="description" content="Explore Aharavanam articles on the future of food, food forests, climate, water, land, community growing and nature-based wellbeing.">
 <style>
 :root{--forest:#244b38;--leaf:#557b52;--sage:#dfe9d9;--cream:#f7f5ed;--clay:#bd7657;--ink:#25342b;--muted:#68766c;--line:#e5e7df}
-*{box-sizing:border-box}body{margin:0;background:var(--cream);color:var(--ink);font-family:Inter,system-ui,-apple-system,"Segoe UI",sans-serif;line-height:1.65}
-a{color:inherit;text-decoration:none}.wrap{width:min(1060px,calc(100% - 36px));margin:auto}
-header{background:rgba(247,245,237,.96);border-bottom:1px solid var(--line);padding:15px 0;position:sticky;top:0}
+*{box-sizing:border-box}body{margin:0;background:var(--cream);color:var(--ink);font-family:Inter,system-ui,-apple-system,"Segoe UI",sans-serif;line-height:1.6}
+a{color:inherit;text-decoration:none}.wrap{width:min(960px,calc(100% - 36px));margin:auto}
+header{background:rgba(247,245,237,.96);border-bottom:1px solid var(--line);padding:15px 0;position:sticky;top:0;z-index:5}
 .top{display:flex;justify-content:space-between;align-items:center;gap:18px}.brand{font-weight:900;letter-spacing:.04em;color:var(--forest)}.brand span{color:var(--clay);font-size:.68rem;letter-spacing:.16em;display:block;line-height:1}
 .back{font-size:.9rem;font-weight:750;color:var(--forest)}
-main{padding:62px 0 78px}.eyebrow{color:var(--leaf);font-size:.78rem;font-weight:850;letter-spacing:.14em;text-transform:uppercase}
-h1{font-size:clamp(2.5rem,6vw,4.4rem);line-height:1.05;letter-spacing:-.05em;color:var(--forest);margin:14px 0}
-.intro{font-size:1.15rem;color:var(--muted);max-width:720px;margin-bottom:38px}
-.feature{display:grid;grid-template-columns:.9fr 1.1fr;background:#fff;border:1px solid var(--line);border-radius:24px;overflow:hidden;box-shadow:0 14px 40px rgba(36,75,56,.07)}
-.feature img{width:100%;height:100%;min-height:330px;object-fit:cover;background:var(--sage)}
-.feature-copy{padding:clamp(24px,4vw,42px);display:flex;flex-direction:column;align-items:flex-start;justify-content:center}
-.tag{font-size:.75rem;font-weight:850;letter-spacing:.12em;text-transform:uppercase;color:var(--clay)}
-h2{font-size:clamp(1.7rem,3vw,2.35rem);line-height:1.15;letter-spacing:-.035em;color:var(--forest);margin:12px 0}
-.feature p{color:var(--muted);margin:0 0 20px}
-.read{display:inline-flex;align-items:center;gap:8px;background:var(--forest);color:#fff;padding:12px 19px;border-radius:999px;font-weight:800}.read:hover{background:#183b2a}
-.more{margin-top:55px}.more h2{font-size:1.7rem}.coming{background:var(--sage);border-radius:18px;padding:22px;color:#425b47}
+main{padding:58px 0 76px}.eyebrow{color:var(--leaf);font-size:.78rem;font-weight:850;letter-spacing:.14em;text-transform:uppercase}
+h1{font-size:clamp(2.35rem,6vw,4rem);line-height:1.05;letter-spacing:-.05em;color:var(--forest);margin:14px 0}
+.intro{font-size:1.1rem;color:var(--muted);max-width:760px;margin:0 0 34px}
+.article-list{display:grid;gap:13px}
+.article-row{display:grid;grid-template-columns:124px minmax(0,1fr);gap:22px;align-items:center;background:#fff;border:1px solid var(--line);border-radius:17px;padding:13px;transition:transform .18s ease,box-shadow .18s ease,border-color .18s ease}
+.article-row:hover{transform:translateY(-2px);border-color:#c8d6c5;box-shadow:0 9px 24px rgba(36,75,56,.08)}
+.article-row img{width:124px;height:96px;object-fit:cover;border-radius:11px;background:var(--sage);display:block}
+.copy{min-width:0}.tag{font-size:.69rem;font-weight:850;letter-spacing:.11em;text-transform:uppercase;color:var(--clay)}
+h2{font-size:1.22rem;line-height:1.25;letter-spacing:-.02em;color:var(--forest);margin:5px 0}
+.summary{font-size:.91rem;color:var(--muted);margin:0 0 5px}
+.read{font-size:.85rem;font-weight:850;color:var(--leaf)}
+.note{margin-top:25px;color:var(--muted);font-size:.92rem}
 footer{background:#193729;color:#eaf0e8;padding:25px 0;font-size:.85rem}footer a{color:#eaf0e8}
-@media(max-width:700px){main{padding:42px 0 58px}.feature{grid-template-columns:1fr}.feature img{min-height:220px;max-height:260px}.top{align-items:flex-start}}
+@media(max-width:600px){main{padding:40px 0 56px}.article-row{grid-template-columns:88px minmax(0,1fr);gap:12px;padding:9px;border-radius:14px}.article-row img{width:88px;height:76px;border-radius:9px}h2{font-size:1.02rem;margin:4px 0}.tag{font-size:.61rem}.summary{font-size:.8rem;line-height:1.4}.read{font-size:.78rem}.top{align-items:flex-start}}
 </style>
 </head>
 <body>
@@ -35,19 +36,41 @@ footer{background:#193729;color:#eaf0e8;padding:25px 0;font-size:.85rem}footer a
 <div class="eyebrow">Ideas • Knowledge • Growing together</div>
 <h1>The Aharavanam Blog</h1>
 <p class="intro">Thoughtful, practical reading on the future of food, food forests, climate, water, land and the role that individuals and communities can play in caring for the places that nourish us.</p>
-<article class="feature">
-<img src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=1200&q=85" alt="Green agricultural landscape">
-<div class="feature-copy">
-<div class="tag">The Future of Food • Article 01</div>
-<h2>Is the Future of Food Becoming More Uncertain?</h2>
-<p>India grows enormous quantities of food. Yet the journey from a healthy harvest to an affordable meal depends on more than production alone. Explore how weather, water, land, livelihoods and food systems connect — and where food forests can contribute.</p>
-<a class="read" href="/future-of-food.html">Read the article <span aria-hidden="true">→</span></a>
-</div>
-</article>
-<section class="more">
-<h2>More articles coming soon</h2>
-<div class="coming">We are building a growing library of useful articles. Upcoming topics include changing weather patterns, agricultural land and urbanisation, water and food security, farming livelihoods, and how to start a food forest. New articles will appear here as they are published.</div>
+<section class="article-list" aria-label="Published articles">
+<a class="article-row" href="/future-of-food.html">
+<img src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=360&q=80" alt="Green agricultural landscape">
+<div class="copy"><div class="tag">The Future of Food · Article 01</div><h2>Is the Future of Food Becoming More Uncertain?</h2><p class="summary">How weather, water, land, livelihoods and food systems connect — and where food forests can contribute.</p><span class="read">Read article →</span></div>
+</a>
+<a class="article-row" href="/changing-weather-food.html">
+<img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=360&q=80" alt="Clouds and changing weather over a landscape">
+<div class="copy"><div class="tag">The Future of Food · Article 02</div><h2>How Changing Weather Patterns Affect What We Eat</h2><p class="summary">Understand how heat, rainfall shifts and extreme weather can affect crops, harvests and food prices.</p><span class="read">Read article →</span></div>
+</a>
+<a class="article-row" href="/cities-agricultural-land.html">
+<img src="https://images.unsplash.com/photo-1519501025264-65ba15a82390?auto=format&fit=crop&w=360&q=80" alt="Expanding city skyline">
+<div class="copy"><div class="tag">The Future of Food · Article 03</div><h2>Are Our Cities Growing at the Cost of Agricultural Land?</h2><p class="summary">Explore the relationship between urban growth, land-use choices, local food production and green spaces.</p><span class="read">Read article →</span></div>
+</a>
+<a class="article-row" href="/water-food-security.html">
+<img src="https://images.unsplash.com/photo-1437482078695-73f5ca6c96e2?auto=format&fit=crop&w=360&q=80" alt="Water flowing through a natural stream">
+<div class="copy"><div class="tag">The Future of Food · Article 04</div><h2>Water: The Hidden Foundation of Food Security</h2><p class="summary">Why soil moisture, groundwater, rainwater harvesting and careful water planning matter for growing food.</p><span class="read">Read article →</span></div>
+</a>
+<a class="article-row" href="/who-will-grow-our-food.html">
+<img src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=360&q=80" alt="Farmer working in a field">
+<div class="copy"><div class="tag">The Future of Food · Article 05</div><h2>Who Will Grow Our Food in the Future?</h2><p class="summary">A look at farmers, rural livelihoods, the next generation and the importance of valuing food-growing work.</p><span class="read">Read article →</span></div>
+</a>
+<a class="article-row" href="/what-is-a-food-forest.html">
+<img src="https://images.unsplash.com/photo-1448375240586-882707db888b?auto=format&fit=crop&w=360&q=80" alt="Sunlight filtering through a green forest">
+<div class="copy"><div class="tag">The Future of Food · Article 06</div><h2>What Is a Food Forest and Why Does It Matter?</h2><p class="summary">Discover how trees, shrubs, climbers and ground plants can be thoughtfully combined in a productive ecosystem.</p><span class="read">Read article →</span></div>
+</a>
+<a class="article-row" href="/own-or-share-land.html">
+<img src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=360&q=80" alt="Open green land ready for growing">
+<div class="copy"><div class="tag">The Future of Food · Article 07</div><h2>Can Owning or Sharing a Piece of Land Make a Difference?</h2><p class="summary">Consider practical ways families and communities can participate in growing food, with realistic expectations.</p><span class="read">Read article →</span></div>
+</a>
+<a class="article-row" href="/how-to-start-food-forest.html">
+<img src="https://images.unsplash.com/photo-1416879595882-3373a0480b5b?auto=format&fit=crop&w=360&q=80" alt="Young plants growing in a garden">
+<div class="copy"><div class="tag">The Future of Food · Article 08</div><h2>How to Start Building Your Own Food Forest</h2><p class="summary">A practical starting guide to observing your site, planning water, choosing plants and caring for young trees.</p><span class="read">Read article →</span></div>
+</a>
 </section>
+<p class="note">New articles and practical guides will be added to this collection as Aharavanam grows.</p>
 </main>
 <footer><div class="wrap">© <span id="year"></span> Aharavanam • Food Forests • Nature • Wellbeing • <a href="/index.html">Home</a></div></footer>
 <script>document.getElementById('year').textContent=new Date().getFullYear();</script>
